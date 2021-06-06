@@ -4,7 +4,7 @@ defmodule AviasalesTestWeb.FlightsController do
   use AviasalesTestWeb, :controller
 
   def index(conn, %{"id" => id}) do
-    flights = File.read!("flights.csv") |> MyParser.parse_string |> Enum.map(fn x -> List.to_tuple(x) end)
+    flights = File.read!("priv/flights.csv") |> MyParser.parse_string |> Enum.map(fn x -> List.to_tuple(x) end)
     flight = List.keyfind(flights, id, 0)
 
     {
